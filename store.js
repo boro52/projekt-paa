@@ -21,7 +21,7 @@ const createTask = async (title, description) => (
       title
     }
 
-    service.insertEntity(table, task, (error, result, response) => {
+    !title ? function() { alert("Nie podano tytulu"); return reject(); } : service.insertEntity(table, task, (error, result, response) => {
       !error ? resolve() : reject()
     })
   })
