@@ -12,12 +12,12 @@ const init = async () => (
   })
 )
 
-const createTask = async (title) => (
+const createTask = async (title, description) => (
   new Promise((resolve, reject) => {
     const generator = storage.TableUtilities.entityGenerator
     const task = {
       PartitionKey: generator.String('task'),
-      RowKey: generator.String(uuid.v4()),
+      RowKey: description,
       title
     }
 
