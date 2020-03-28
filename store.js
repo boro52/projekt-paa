@@ -17,8 +17,9 @@ const createTask = async (title, description) => (
     const generator = storage.TableUtilities.entityGenerator
     const task = {
       PartitionKey: generator.String('task'),
-      RowKey: description,
-      title
+      RowKey: generator.String(uuid.v4()),
+      title,
+      description
     }
 
     !title ? function() { alert("Nie podano tytulu"); return reject(); } : service.insertEntity(table, task, (error, result, response) => {
